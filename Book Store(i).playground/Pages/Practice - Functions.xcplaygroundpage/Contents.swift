@@ -19,7 +19,7 @@
  Then, let's create a book store first:
  
  */
-let books = (
+let books:[(String, String, Double)]? = [
     ("Digital Fortress","Dan Brown",9.99),
     ("Angels & Demons","Dan Brown", 17.00),
     ("Deception Point","Dan Brown", 17.00),
@@ -29,7 +29,7 @@ let books = (
     ("Harry Potter and the Deathly Hallows", "J.K. Rowling", 14.99),
     ("旅行與讀書","詹宏志", 12.00),
     ("國宴與家宴","王宣一", 7.99)
-)
+]
 
 /*:
  
@@ -67,9 +67,11 @@ bookStore.setDataSource(priceCalculator: totalBookPrice)
 func getBook(at i: Int) -> (title: String, author: String, price: Double)? {
     print ("Get book by \(i).")
     if i < 9 {
-        let book = books.0
+        let book = books?[i]
         return book
-    } else {return nil }
+    } else {
+        return nil
+    }
 }
 bookStore.setDataSource(bookGetter: getBook(at:))
 
@@ -80,9 +82,6 @@ bookStore.setDataSource(bookGetter: getBook(at:))
  */
 
 bookStore.showInPlayground()
-
-//: ---
-//: [<- Previous](@previous) | [Next ->](@next)
 
 //: ---
 //: [<- Previous](@previous) | [Next ->](@next)
